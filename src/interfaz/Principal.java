@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package interfaz;
 
 import javax.print.event.PrintJobEvent;
@@ -19,6 +18,7 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form Principal
      */
     double v[];
+
     public Principal() {
         initComponents();
         cmdCrear.setEnabled(true);
@@ -152,15 +152,13 @@ public class Principal extends javax.swing.JFrame {
         if (txtLongitud.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Digite la longitud", "ERROR", JOptionPane.ERROR_MESSAGE);
             txtLongitud.requestFocusInWindow();
-        }
-        else if (Integer.parseInt(txtLongitud.getText()) == 0) {
+        } else if (Integer.parseInt(txtLongitud.getText()) == 0) {
             JOptionPane.showMessageDialog(this, "La longitud no puede ser cero", "ERROR", JOptionPane.ERROR_MESSAGE);
             txtLongitud.requestFocusInWindow();
             txtLongitud.selectAll();
-        }
-        else {
+        } else {
             longitud = Integer.parseInt(txtLongitud.getText());
-            v = new double[longitud]; 
+            v = new double[longitud];
             JOptionPane.showMessageDialog(this, "Vector creado exitosamente");
             cmdCrear.setEnabled(false);
             cmdLlenarManual.setEnabled(true);
@@ -183,9 +181,21 @@ public class Principal extends javax.swing.JFrame {
     private void cmdLlenarManualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarManualActionPerformed
         // TODO add your handling code here:
         double n;
+        int sw;
         for (int i = 0; i < v.length; i++) {
-            n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento No " +(i+1)));
-            v[i] = n;
+            do {
+                sw = 1;
+                try {
+                    n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento No " + (i + 1)));
+                    v[i] = n;
+                }catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(this, "Digite un número válido", "ERROR" ,JOptionPane.ERROR_MESSAGE );
+                    sw = 0;
+                } catch (NullPointerException e) {
+                    JOptionPane.showMessageDialog(this, "No puedes salir", "ERROR" ,JOptionPane.ERROR_MESSAGE);
+                    sw = 0;
+                }
+            } while (sw == 0);
         }
         cmdCrear.setEnabled(false);
         cmdLlenarManual.setEnabled(false);
@@ -197,7 +207,7 @@ public class Principal extends javax.swing.JFrame {
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
         // TODO add your handling code here:
         for (int i = 0; i < v.length; i++) {
-            txtResultado.append(v[i]+"\n");
+            txtResultado.append(v[i] + "\n");
         }
         cmdCrear.setEnabled(false);
         cmdLlenarManual.setEnabled(false);
@@ -224,7 +234,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         double n;
         for (int i = 0; i < v.length; i++) {
-            n = (int)(Math.random() * 50 + 20);
+            n = (int) (Math.random() * 50 + 20);
             v[i] = n;
         }
         cmdCrear.setEnabled(false);
@@ -232,7 +242,7 @@ public class Principal extends javax.swing.JFrame {
         cmdLlenarAutomatico.setEnabled(false);
         cmdMostrar.setEnabled(true);
         cmdBorrar.setEnabled(true);
-        
+
     }//GEN-LAST:event_cmdLlenarAutomaticoActionPerformed
 
     /**
