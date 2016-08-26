@@ -21,6 +21,11 @@ public class Principal extends javax.swing.JFrame {
     double v[];
     public Principal() {
         initComponents();
+        cmdCrear.setEnabled(true);
+        cmdLlenarManual.setEnabled(false);
+        cmdLlenarAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(false);
+        cmdBorrar.setEnabled(true);
     }
 
     /**
@@ -59,14 +64,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setText("Longitud:");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 25, -1, -1));
 
         txtLongitud.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtLongitudKeyTyped(evt);
             }
         });
-        jPanel2.add(txtLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 15, 100, 30));
+        jPanel2.add(txtLongitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 100, 30));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 190, 60));
 
@@ -137,7 +142,8 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(416, 373));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCrearActionPerformed
@@ -156,6 +162,12 @@ public class Principal extends javax.swing.JFrame {
             longitud = Integer.parseInt(txtLongitud.getText());
             v = new double[longitud]; 
             JOptionPane.showMessageDialog(this, "Vector creado exitosamente");
+            cmdCrear.setEnabled(false);
+            cmdLlenarManual.setEnabled(true);
+            cmdLlenarAutomatico.setEnabled(true);
+            cmdMostrar.setEnabled(false);
+            cmdBorrar.setEnabled(true);
+            txtLongitud.setEditable(false);
         }
     }//GEN-LAST:event_cmdCrearActionPerformed
 
@@ -175,6 +187,11 @@ public class Principal extends javax.swing.JFrame {
             n = Double.parseDouble(JOptionPane.showInputDialog(this, "Digite el elemento No " +(i+1)));
             v[i] = n;
         }
+        cmdCrear.setEnabled(false);
+        cmdLlenarManual.setEnabled(false);
+        cmdLlenarAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(true);
+        cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdLlenarManualActionPerformed
 
     private void cmdMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdMostrarActionPerformed
@@ -182,6 +199,11 @@ public class Principal extends javax.swing.JFrame {
         for (int i = 0; i < v.length; i++) {
             txtResultado.append(v[i]+"\n");
         }
+        cmdCrear.setEnabled(false);
+        cmdLlenarManual.setEnabled(false);
+        cmdLlenarAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(false);
+        cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdMostrarActionPerformed
 
     private void cmdBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdBorrarActionPerformed
@@ -190,6 +212,12 @@ public class Principal extends javax.swing.JFrame {
         txtResultado.setText("");
         v = null;
         txtLongitud.requestFocusInWindow();
+        cmdCrear.setEnabled(true);
+        cmdLlenarManual.setEnabled(false);
+        cmdLlenarAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(true);
+        cmdBorrar.setEnabled(true);
+        txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmdBorrarActionPerformed
 
     private void cmdLlenarAutomaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLlenarAutomaticoActionPerformed
@@ -199,6 +227,11 @@ public class Principal extends javax.swing.JFrame {
             n = (int)(Math.random() * 50 + 20);
             v[i] = n;
         }
+        cmdCrear.setEnabled(false);
+        cmdLlenarManual.setEnabled(false);
+        cmdLlenarAutomatico.setEnabled(false);
+        cmdMostrar.setEnabled(true);
+        cmdBorrar.setEnabled(true);
         
     }//GEN-LAST:event_cmdLlenarAutomaticoActionPerformed
 
