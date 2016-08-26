@@ -182,6 +182,7 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
         double n;
         int sw, res;
+        boolean aux = true;
         for (int i = 0; i < v.length; i++) {
             do {
                 sw = 1;
@@ -198,6 +199,7 @@ public class Principal extends javax.swing.JFrame {
                     if (res == 0) {
                         sw = 1;
                         i = v.length;
+                        aux = false;
                     }
                     else {
                         sw = 0;
@@ -208,7 +210,7 @@ public class Principal extends javax.swing.JFrame {
         cmdCrear.setEnabled(false);
         cmdLlenarManual.setEnabled(false);
         cmdLlenarAutomatico.setEnabled(false);
-        cmdMostrar.setEnabled(true);
+        cmdMostrar.setEnabled(aux);
         cmdBorrar.setEnabled(true);
     }//GEN-LAST:event_cmdLlenarManualActionPerformed
 
@@ -233,7 +235,7 @@ public class Principal extends javax.swing.JFrame {
         cmdCrear.setEnabled(true);
         cmdLlenarManual.setEnabled(false);
         cmdLlenarAutomatico.setEnabled(false);
-        cmdMostrar.setEnabled(true);
+        cmdMostrar.setEnabled(false);
         cmdBorrar.setEnabled(true);
         txtLongitud.setEditable(true);
     }//GEN-LAST:event_cmdBorrarActionPerformed
